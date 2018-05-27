@@ -1,11 +1,24 @@
 # Semantic Segmentation
 ### Introduction
-In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
+The goal of this project is to construct a fully convolutional neural network based on the VGG-16 image classifier architecture for performing semantic segmentation to identify drivable road area from an car dashcam image (trained and tested on the KITTI data set).
 
 ## Network
 The FCN is composed of two parts, the convolutional part which functions as a classifier and a deconvolutional part that upsamples the results to the desired image size. The image classifier used here was the vgg16 network without its fully connected layers. The last convolutional layer was instead transformed via a 1x1 convolution and upsampled. Skip connections between prior convolutional layers were also added at each deconvolutional step. The architecture of the network is based on this [paper](https://people.eecs.berkeley.edu/%7Ejonlong/long_shelhamer_fcn.pdf).
 
+## Optimizer
+The loss function for the network is cross-entropy, and an Adam optimizer is used.
+
+## Training
+The hyperparameters used for training are:
+
+* keep_prob: 0.5
+* learning_rate: 0.0009
+* epochs: 30
+* batch_size: 16
+
 ## Result
+Loss per batch tends to reduce gradually starting from about 1.5 in first epoch. At 30 epochs, final average loss per batch was about 0.06.
+
 Some of the images after running inference:
 ![](images/um_000020.png)
 ![](images/um_000010.png)
