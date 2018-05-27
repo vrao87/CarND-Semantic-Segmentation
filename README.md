@@ -2,6 +2,18 @@
 ### Introduction
 In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
 
+## Network
+The FCN is composed of two parts, the convolutional part which functions as a classifier and a deconvolutional part that upsamples the results to the desired image size. The image classifier used here was the vgg16 network without its fully connected layers. The last convolutional layer was instead transformed via a 1x1 convolution and upsampled. Skip connections between prior convolutional layers were also added at each deconvolutional step. The architecture of the network is based on this [paper](https://people.eecs.berkeley.edu/%7Ejonlong/long_shelhamer_fcn.pdf).
+
+## Result
+Some of the images after running inference:
+![](images/um_000020.png)
+![](images/um_000010.png)
+![](images/um_000017.png)
+![](images/um_000027.png)
+![](images/um_000075.png)
+![](images/umm_000030.png)
+![](images/umm_000072.png)
 ### Setup
 ##### GPU
 `main.py` will check to make sure you are using GPU - if you don't have a GPU on your system, you can use AWS or another cloud computing platform.
